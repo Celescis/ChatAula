@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pruebaapp-7bd90": {
+      "hosting": {
+        "app": [
+          "6-conversandoenelaula"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pruebaapp-7bd90"
+  }
+}

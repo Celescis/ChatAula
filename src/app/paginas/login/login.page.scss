@@ -1,0 +1,176 @@
+.contenedor {
+  --background: black;
+}
+
+//HEADER
+ion-header {
+  height: 70px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: black;
+  z-index: 0;
+}
+
+.headert {
+  background: black;
+  font-size: 60px;
+  font-family: 'Casino 3D', sans-serif;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+  z-index: 0;
+}
+
+.gif {
+  height: 100px;
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+.alert-danger.mensajeError {
+  font-size: 0.7rem;
+  padding: 0.4rem;
+  margin-top: 0;
+}
+
+.card {
+  position: fixed;
+  height: 85%;
+  width: 200%;
+  border-top-left-radius: 20%;
+  margin-left: -10px;
+  background-image: url("/assets/background/splashback.png");
+  background-size: cover;
+}
+
+ion-card-content {
+  position: fixed;
+  margin-top: 10%;
+  overflow: hidden;
+  max-height: 100%;
+}
+
+.ion-item {
+  --ion-item-background: white;
+  // margin-top: -3.5%;
+  border: 2px solid #d9bde2;
+  border-radius: 35px;
+  // justify-content: space-evenly;
+}
+
+.botonimg {
+  width: 50px;
+  height: 50px;
+}
+
+
+.item-background-color {
+  --ion-item-background: transparent;
+}
+
+.itemsFormLogin {
+  height: 55px;
+  box-shadow: 1px 8px 8px 0px rgba(0, 0, 0, 0.3);
+  --highlight-height: 0px;
+  border-top-left-radius: 20px;
+  background: #000000;
+  color: white;
+  margin-bottom: 20px;
+  width: 80%;
+  margin-left: 15%;
+  z-index: 0;
+}
+
+ion-input {
+  font-size: 14px;
+  --padding-top: 20px;
+  --padding-bottom: 19px;
+  --padding-start: 0px;
+  color: white;
+}
+
+.icon {
+  margin-right: 5px;
+  margin-left: -1px;
+  z-index: 1;
+}
+
+.botoncito {
+  width: 100px;
+  height: 40px;
+  --border-radius: 0;
+  font-size: 12px;
+  --background: #000000;
+  color: white;
+  margin-left: 40%;
+}
+
+.segment {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 52%;
+  // padding: 10px;
+  font-size: 20px;
+  background: black;
+  color: white;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .segment {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 52%;
+  }
+}
+
+//SPINNER
+@keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.custom-spinner img {
+  animation: rotate-center 1s ease-in-out infinite both;
+  max-width: 200px;
+  height: 200px;
+  opacity: 1;
+}
+
+.custom-spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  background-color: rgba(91, 91, 91, 0.932);
+  background-repeat: no-repeat;
+  background-size: 150px;
+  background-position: center;
+}
+
+.spinnerh1 {
+  font-family: 'Ruluko', sans-serif;
+  position: absolute;
+  top: 200px;
+  font-size: 40px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}

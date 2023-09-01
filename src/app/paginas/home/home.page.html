@@ -1,0 +1,145 @@
+<ion-content>
+  <!--******************************* LOGOUT *******************************-->
+
+  <ion-fab vertical="top" horizontal="start">
+    <ion-fab-button id="out-loading" (click)="logoutUser()"><ion-icon name="exit-outline" style="
+      color: rgb(255, 0, 0);
+      background: rgb(255, 255, 255);
+      padding: 5px;
+      font-size: 3rem;
+    "></ion-icon></ion-fab-button>
+  </ion-fab>
+
+  <!--******************************* MENU BOTONES INICIALES *******************************-->
+  <div class="container" *ngIf="chat === 0">
+    <div class="btn-chat-A" (click)="showChat4A()">
+      <h2>PPS-4A</h2>
+    </div>
+
+    <div class="btn-chat-B" (click)="showChat4B()">
+      <h2>PPS-4B</h2>
+    </div>
+
+  </div>
+
+  <!--******************************* CHAT 4A *******************************-->
+  <section class="chat-container" *ngIf="chat === 1" style="height: 100%">
+    <ion-fab vertical="top" horizontal="start" slot="fixed">
+      <ion-fab-button (click)="goToClassrooms()" style="border: 1px solid #000; border-radius: 50%"><ion-icon
+          name="arrow-undo-outline" style="
+          color: #000000;
+          background: rgb(255, 255, 255);
+          padding: 5px;
+          font-size: 3rem;
+        "></ion-icon></ion-fab-button>
+    </ion-fab>
+    <ion-fab vertical="top" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="logoutUser()" style="border: 1px solid #000; border-radius: 50%"><ion-icon
+          name="exit-outline" style="
+          color: #000000;
+          background: rgb(255, 255, 255);
+          padding: 5px;
+          font-size: 3rem;
+        "></ion-icon></ion-fab-button>
+    </ion-fab>
+
+    <div class="card text-center contenedor-carta-a view-from-right">
+      <div class="card-header card-header-a" style="text-align: center;">4°A</div>
+
+      <div class="card-body-a">
+        <div id="contenedor-mensajes" class="contenedor-mensajes">
+          <p *ngFor="let message of messageListA" class="p-3 mensajes mensaje-escrito" [ngClass]="
+              user === message.user
+                ? 'mensaje-enviado'
+                : 'mensaje-recibido'
+            ">
+
+            <span *ngIf="user !== message.user" [ngClass]="user === message.user ? 'email-1' : 'email-2'"
+              style="margin-left: 10px;">{{
+              message.user }}<br /></span>
+            <span style="margin-left: 10px">{{ message.text }}</span>
+            <br />
+            <span class="fecha">{{ message.date }}</span>
+          </p>
+        </div>
+      </div>
+
+      <form class="card-footer card-footer-a text-muted input-group contenedor-input">
+        <ion-item style="width: 100%;" lines="none">
+
+          <ion-input type="text" lines="none" placeholder="Escribe un mensaje aquí"
+          [(ngModel)]="newMessage" [ngModelOptions]="{ standalone: true }"
+          (input)="newMessage = newMessage.slice(0, 22)"
+          style="font-family: 'Ruluko', sans-serif; font-size: 17px;"></ion-input>
+        
+
+          <img (click)="sendMessageA()" style="width: 30px;" src="/assets/background/enviar.png" alt="">
+
+        </ion-item>
+      </form>
+    </div>
+  </section>
+
+  <!--******************************* CHAT 4B*******************************-->
+  <section class="chat-container" *ngIf="chat === 2" style="height: 100%">
+    <ion-fab vertical="top" horizontal="start" slot="fixed">
+      <ion-fab-button (click)="goToClassrooms()" style="border: 1px solid #000; border-radius: 50%"><ion-icon
+          name="arrow-undo-outline" style="
+          color: #000000;
+          background: rgb(255, 255, 255);
+          padding: 5px;
+          font-size: 3rem;
+        "></ion-icon></ion-fab-button>
+    </ion-fab>
+    <ion-fab vertical="top" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="logoutUser()" style="border: 1px solid #000; border-radius: 50%"><ion-icon
+          name="exit-outline" style="
+          color: #000000;
+          background: rgb(255, 255, 255);
+          padding: 5px;
+          font-size: 3rem;
+        "></ion-icon></ion-fab-button>
+    </ion-fab>
+
+    <div class="card text-center contenedor-carta-b view-from-right">
+      <div class="card-header card-header-b" style="text-align: center;">4°B</div>
+
+      <div class="card-body-b">
+        <div id="contenedor-mensajes" class="contenedor-mensajes">
+          <p *ngFor="let message of messageListB" class="p-2 mensajes" [ngClass]="
+              user === message.user
+                ? 'mensaje-enviado'
+                : 'mensaje-recibido'
+            ">
+
+            <span *ngIf="user!== message.user" [ngClass]="user === message.user ? 'email-1' : 'email-2'"
+              style="margin-left: 10px;">{{
+              message.user }}</span>
+            <br />
+            <span style="margin-left: 10px;">{{ message.text }}</span> <br />
+            <span class="fecha">{{ message.date }}</span>
+          </p>
+        </div>
+      </div>
+
+      <form class="card-footer card-footer-b text-muted input-group contenedor-input">
+        <ion-item style="width: 100%;" lines="none">
+
+          <ion-input type="text" maxlength="22" lines="none" placeholder="Escribe un mensaje aquí"
+            [(ngModel)]="newMessage" [ngModelOptions]="{ standalone: true }"
+            style="font-family: 'Ruluko', sans-serif; font-size: 17px;" />
+
+          <img (click)="sendMessageB()" style="width: 30px;" src="/assets/background/enviar.png" alt="">
+
+        </ion-item>
+      </form>
+    </div>
+  </section>
+
+
+  <!-- ******************************* SPINNER *******************************-->
+  <div *ngIf="pressedButton" class="custom-spinner">
+    <h1 class="spinnerh1">Cargando...</h1>
+    <img src="/assets/icon/icon.png" alt="Custom Spinner" />
+  </div>
+</ion-content>

@@ -1,0 +1,70 @@
+<ion-card-header style="background: black;">
+  <ion-header>
+    <ion-title class="centered-title headert">ACCEDER</ion-title>
+  </ion-header>
+</ion-card-header>
+<ion-content class="contenedor">
+
+  <ion-card class="card" color="dark">
+    <ion-card-content>
+      <form (Submit)="Login()">
+
+        <ion-item class="item-background-color itemsFormLogin">
+          <ion-label><ion-icon class="text-light icon" name="mail" item-start></ion-icon>Correo:</ion-label>
+          <ion-input [formControl]="correo" name="correo"></ion-input>
+        </ion-item>
+
+        <div class="alert alert-danger mensajeError mt-2 bi bi-x-circle"
+          [hidden]="correo.valid || (correo.pristine && correo.untouched)">
+          <span *ngIf="correo.errors?.['email']">
+            El correo debe ser válido
+          </span>
+
+          <span *ngIf="correo.errors?.['required']">
+            El correo es obligatorio, ingreselo
+          </span>
+        </div>
+
+        <ion-item class="item-background-color itemsFormLogin">
+          <ion-label><ion-icon class="text-light icon" name="key" item-start></ion-icon>Contraseña:</ion-label>
+          <ion-input [formControl]="password" name="password" [counter]="true"
+            [type]="showPassword ? 'text' : 'password'" maxlength="8"></ion-input>
+          <ion-icon class="text-light" slot="end" name="{{ showPassword ? 'eye-off' : 'eye' }}"
+            (click)="togglePasswordVisibility()"></ion-icon>
+        </ion-item>
+
+        <div class="alert alert-danger mensajeError mt-1 bi bi-x-circle"
+          [hidden]="password.valid || (password.pristine && password.untouched)">
+          <span *ngIf="password.errors?.['minlength']">
+            La clave debe tener mínimo 6 caracteres
+          </span>
+
+          <span *ngIf="password.errors?.['required']">
+            La contraseña es obligatoria, ingresela
+          </span>
+        </div>
+
+        <ion-button class="botoncito" type="submit" (click)="Login()">Ingresar</ion-button>
+      </form>
+      <img src="/assets/icon/icon.png" alt="" style="height: 200px; width: 200px; display: block; margin-left: 25%;">
+    </ion-card-content>
+    
+    <ion-segment color="success"  class="segment" >
+      <ion-segment-button (click)="CargaUsuarios(1)" style="color:white">
+        Admin
+      </ion-segment-button>
+      <ion-segment-button (click)="CargaUsuarios(2)" style="color:white">
+        Usuario
+      </ion-segment-button>
+      <ion-segment-button (click)="CargaUsuarios(3)" style="color:white">
+        Invitado
+      </ion-segment-button>
+    </ion-segment>
+    
+  </ion-card>
+  <!-- ******************************* SPINNER *******************************-->
+  <div *ngIf="showSpinner" class="custom-spinner">
+    <h1 class="spinnerh1">Cargando...</h1>
+    <img src="/assets/icon/icon.png" alt="Custom Spinner" />
+  </div>
+</ion-content>
